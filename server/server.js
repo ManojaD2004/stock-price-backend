@@ -3,6 +3,7 @@ const puppeteer = require("puppeteer");
 const os = require("os");
 const app = express();
 const cors = require("cors");
+const fs = require("fs");
 const port = 4000;
 async function main() {
   app.use(cors());
@@ -27,79 +28,66 @@ async function main() {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
+  const STOCK_PRICE_FILE = "./data/stock-prices.json";
   const getStockPrice = async (ticker, exchange, page) => {
     const url = `https://www.google.com/finance/quote/${ticker}:${exchange}`;
-
     try {
       await page.goto(url, { waitUntil: "domcontentloaded" });
 
+      // Price
       const selector = ".YMlKec.fxKbKc";
+      // "78,699.07"
       await page.waitForSelector(selector);
 
+      // Up or Down Percentage
+      const selector1 = ".JwB6zf";
+      // "JwB6zf"
+      await page.waitForSelector(selector1);
+
+      // Previous Close
+      let selector2 = ".P6K39c";
+      await page.waitForSelector(selector2);
+
       const priceText = await page.$eval(selector, (el) => el.textContent);
-      return priceText;
+      const percent = await page.$eval(selector1, (el) => el.textContent);
+      const diff = await page.$eval(selector2, (el) => el.textContent);
+      console.log(ticker, ": ");
+      console.log(priceText, diff, percent);
+      const stockData = {
+        symbol: ticker,
+        curPrice: parseFloat(priceText.replace(/₹|,|\$/g, "")),
+        prePrice: parseFloat(diff.replace(/₹|,|\$/g, "")),
+        percent: percent,
+        currency: priceText[0],
+        diff: 0,
+        direction: "",
+      };
+      stockData.diff = stockData.curPrice - stockData.prePrice;
+      if (stockData.diff === 0) {
+        stockData.direction = "no-change";
+      } else if (stockData.diff > 0) {
+        stockData.direction = "up";
+      } else {
+        stockData.direction = "down";
+      }
+      stockData.diff = stockData.diff.toFixed(2);
+      return stockData;
     } catch (error) {
-      console.error("Error fetching stock price:", error.message);
+      console.error("Error fetching stock price:", ticker, error.message);
       return null;
     }
   };
 
-  let lastPrices = {
-    AAPL: 175.65, // Apple
-    MSFT: 320.15, // Microsoft
-    GOOGL: 138.75, // Google
-    TSLA: 245.85, // Tesla
-    AMZN: 135.4, // Amazon
-    META: 310.5, // Meta (Facebook)
-    NVDA: 495.2, // NVIDIA
-    NFLX: 410.0, // Netflix
-    DIS: 89.35, // Disney
-    "BRK.B": 350.45, // Berkshire Hathaway
-    RELIANCE: 2400.25, // Reliance Industries
-    INFY: 1485.15, // Infosys
-    TCS: 3645.8, // Tata Consultancy Services
-    HDFCBANK: 1570.0, // HDFC Bank
-    BHARTIARTL: 875.5, // Bharti Airtel
-    ITC: 450.3, // ITC Limited
-    ICICIBANK: 980.75, // ICICI Bank
-    KOTAKBANK: 1785.45, // Kotak Mahindra Bank
-    LT: 2500.9, // Larsen & Toubro
-    ADANIENT: 2275.6, // Adani Enterprises
-  };
-
-  const fetchStockPrices = async (stocks) => {
+  const fetchStockPrices = async (stocks, page) => {
     const stockPrices = [];
-    const page = await browser.newPage();
-    await page.waitForNetworkIdle({ idleTime: 500 });
     for (const { ticker, exchange } of stocks) {
-      const priceText = await getStockPrice(ticker, exchange, page);
-
-      if (priceText !== null) {
-        const currentPrice = parseFloat(priceText.replace(/₹|,|\$/g, ""));
-        let direction = "no-change";
-
-        if (lastPrices[ticker] !== undefined) {
-          const lastPrice = lastPrices[ticker];
-
-          if (currentPrice > lastPrice) direction = "up";
-          else if (currentPrice < lastPrice) direction = "down";
-        }
-
-        lastPrices[ticker] = currentPrice; // Update last price
-        stockPrices.push({ symbol: ticker, price: priceText, direction });
-      } else {
-        stockPrices.push({
-          symbol: ticker,
-          price: "Price unavailable",
-          direction: "no-change",
-        });
-      }
+      const stockData = await getStockPrice(ticker, exchange, page);
+      stockPrices.push(stockData);
     }
-
     return stockPrices;
   };
 
-  app.get("/get-stock-prices", async (req, res) => {
+  const intervalFun = async () => {
     const startTime = Date.now();
     console.log("Start Time!");
     const group1 = [
@@ -134,17 +122,44 @@ async function main() {
     ];
 
     try {
-      const allPrices1 = await Promise.all([
-        fetchStockPrices(group1),
-        fetchStockPrices(group2),
-        fetchStockPrices(group3),
-        fetchStockPrices(group4),
-      ]);
       const allPrices = [];
+      const page1 = await browser.newPage();
+      await page1.waitForNetworkIdle({ idleTime: 500 });
+      const page2 = await browser.newPage();
+      await page2.waitForNetworkIdle({ idleTime: 500 });
+      const page3 = await browser.newPage();
+      await page3.waitForNetworkIdle({ idleTime: 500 });
+      const page4 = await browser.newPage();
+      await page4.waitForNetworkIdle({ idleTime: 500 });
+      const allPrices1 = await Promise.all([
+        fetchStockPrices(group1, page1),
+        fetchStockPrices(group2, page2),
+        fetchStockPrices(group3, page3),
+        fetchStockPrices(group4, page4),
+      ]);
+      await page1.close();
+      await page2.close();
+      await page3.close();
+      await page4.close();
       for (const prices of allPrices1) {
         allPrices.push(...prices);
       }
+      fs.writeFileSync(STOCK_PRICE_FILE, JSON.stringify(allPrices, null, 4), {
+        encoding: "utf-8",
+      });
 
+      console.log("End!", (Date.now() - startTime) / 1000, "Time");
+    } catch (error) {
+      console.error("Error fetching stock prices:", error);
+    }
+  };
+  app.get("/stock-prices", async (req, res) => {
+    const startTime = Date.now();
+    console.log("Start Time!");
+    try {
+      const allPrices = JSON.parse(
+        fs.readFileSync(STOCK_PRICE_FILE, { encoding: "utf-8" })
+      );
       res.json({ stocks: allPrices });
       console.log("End!", (Date.now() - startTime) / 1000, "Time");
     } catch (error) {
@@ -156,6 +171,9 @@ async function main() {
   // Start the server
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+    intervalFun();
+    setInterval(intervalFun, 1000 * 60 * 5);
+    // Every Five Minutes
   });
 }
 main();
