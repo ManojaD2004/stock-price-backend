@@ -160,11 +160,11 @@ async function main() {
       const allPrices = JSON.parse(
         fs.readFileSync(STOCK_PRICE_FILE, { encoding: "utf-8" })
       );
-      res.json({ stocks: allPrices });
+      res.status(200).send({ stocks: allPrices });
       console.log("End!", (Date.now() - startTime) / 1000, "Time");
     } catch (error) {
       console.error("Error fetching stock prices:", error);
-      return res.status(500).json({ error: "Unable to fetch stock prices" });
+      return res.status(500).send({ error: "Unable to fetch stock prices" });
     }
   });
 

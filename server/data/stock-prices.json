@@ -3,7 +3,7 @@
         "symbol": "AAPL",
         "curPrice": 255.65,
         "prePrice": 259.02,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "$",
         "diff": "-3.37",
         "direction": "down"
@@ -12,7 +12,7 @@
         "symbol": "MSFT",
         "curPrice": 430.56,
         "prePrice": 438.11,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "$",
         "diff": "-7.55",
         "direction": "down"
@@ -30,7 +30,7 @@
         "symbol": "TSLA",
         "curPrice": 431.66,
         "prePrice": 454.13,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "$",
         "diff": "-22.47",
         "direction": "down"
@@ -48,7 +48,7 @@
         "symbol": "RELIANCE",
         "curPrice": 1221.5,
         "prePrice": 1216.55,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "₹",
         "diff": "4.95",
         "direction": "up"
@@ -57,7 +57,7 @@
         "symbol": "INFY",
         "curPrice": 1917,
         "prePrice": 1907.4,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "₹",
         "diff": "9.60",
         "direction": "up"
@@ -66,7 +66,7 @@
         "symbol": "TCS",
         "curPrice": 4157.1,
         "prePrice": 4169.1,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "₹",
         "diff": "-12.00",
         "direction": "down"
@@ -93,7 +93,7 @@
         "symbol": "META",
         "curPrice": 599.81,
         "prePrice": 603.35,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "$",
         "diff": "-3.54",
         "direction": "down"
@@ -102,7 +102,7 @@
         "symbol": "NVDA",
         "curPrice": 137.09,
         "prePrice": 139.93,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "$",
         "diff": "-2.84",
         "direction": "down"
