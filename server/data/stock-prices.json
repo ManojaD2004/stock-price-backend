@@ -3,7 +3,7 @@
         "symbol": "AAPL",
         "curPrice": 255.65,
         "prePrice": 259.02,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "$",
         "diff": "-3.37",
         "direction": "down"
@@ -30,7 +30,7 @@
         "symbol": "TSLA",
         "curPrice": 431.66,
         "prePrice": 454.13,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "$",
         "diff": "-22.47",
         "direction": "down"
@@ -39,7 +39,7 @@
         "symbol": "AMZN",
         "curPrice": 223.79,
         "prePrice": 227.05,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "$",
         "diff": "-3.26",
         "direction": "down"
@@ -57,7 +57,7 @@
         "symbol": "INFY",
         "curPrice": 1917,
         "prePrice": 1907.4,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "₹",
         "diff": "9.60",
         "direction": "up"
@@ -75,7 +75,7 @@
         "symbol": "HDFCBANK",
         "curPrice": 1801,
         "prePrice": 1790.75,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "₹",
         "diff": "10.25",
         "direction": "up"
@@ -93,7 +93,7 @@
         "symbol": "META",
         "curPrice": 599.81,
         "prePrice": 603.35,
-        "percent": "-0.93%",
+        "percent": "+0.27%",
         "currency": "$",
         "diff": "-3.54",
         "direction": "down"
@@ -111,7 +111,7 @@
         "symbol": "NFLX",
         "curPrice": 907.55,
         "prePrice": 924.14,
-        "percent": "+0.27%",
+        "percent": "-0.93%",
         "currency": "$",
         "diff": "-16.59",
         "direction": "down"

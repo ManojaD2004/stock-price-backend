@@ -13,6 +13,6 @@ RUN apt-get update && apt-get install curl gnupg -y \
     && apt-get install google-chrome-stable -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./server.js ./
+COPY ./ ./
 
-CMD [ "node", "." ]
+CMD [ "npm", "run", "start" ]
