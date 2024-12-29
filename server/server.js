@@ -4,6 +4,7 @@ const os = require("os");
 const app = express();
 const cors = require("cors");
 const fs = require("fs");
+const chalk = require("chalk");
 const port = 4000;
 async function main() {
   app.use(cors());
@@ -36,41 +37,40 @@ async function main() {
 
       // Price
       const selector = ".YMlKec.fxKbKc";
-      // "78,699.07"
+      // "YMlKec fxKbKc"
       await page.waitForSelector(selector);
-
-      // Up or Down Percentage
-      const selector1 = ".JwB6zf";
-      // "JwB6zf"
-      await page.waitForSelector(selector1);
 
       // Previous Close
       let selector2 = ".P6K39c";
+      // "P6K39c"
       await page.waitForSelector(selector2);
 
       const priceText = await page.$eval(selector, (el) => el.textContent);
-      const percent = await page.$eval(selector1, (el) => el.textContent);
-      const diff = await page.$eval(selector2, (el) => el.textContent);
-      console.log(ticker, ": ");
-      console.log(priceText, diff, percent);
+      const prePriceText = await page.$eval(selector2, (el) => el.textContent);
+      const curPrice = parseFloat(priceText.replace(/₹|,|\$/g, ""));
+      const prePrice = parseFloat(prePriceText.replace(/₹|,|\$/g, ""));
+      const diff = curPrice - prePrice;
+      const percent = ((diff / prePrice) * 100).toFixed(2) + "%";
+      console.log(chalk.yellow(ticker, ": "));
       const stockData = {
         symbol: ticker,
-        curPrice: parseFloat(priceText.replace(/₹|,|\$/g, "")),
-        prePrice: parseFloat(diff.replace(/₹|,|\$/g, "")),
+        curPrice: curPrice,
+        prePrice: prePrice,
         percent: percent,
         currency: priceText[0],
-        diff: 0,
+        diff: diff.toFixed(2),
         direction: "",
       };
-      stockData.diff = stockData.curPrice - stockData.prePrice;
-      if (stockData.diff === 0) {
+      if (diff === 0) {
         stockData.direction = "no-change";
+        console.log(chalk.white(priceText, prePriceText, percent));
       } else if (stockData.diff > 0) {
         stockData.direction = "up";
+        console.log(chalk.green(priceText, prePriceText, percent));
       } else {
         stockData.direction = "down";
+        console.log(chalk.red(priceText, prePriceText, percent));
       }
-      stockData.diff = stockData.diff.toFixed(2);
       return stockData;
     } catch (error) {
       console.error("Error fetching stock price:", ticker, error.message);

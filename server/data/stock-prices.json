@@ -3,7 +3,7 @@
         "symbol": "AAPL",
         "curPrice": 255.65,
         "prePrice": 259.02,
-        "percent": "-0.93%",
+        "percent": "-1.30%",
         "currency": "$",
         "diff": "-3.37",
         "direction": "down"
@@ -12,7 +12,7 @@
         "symbol": "MSFT",
         "curPrice": 430.56,
         "prePrice": 438.11,
-        "percent": "+0.27%",
+        "percent": "-1.72%",
         "currency": "$",
         "diff": "-7.55",
         "direction": "down"
@@ -21,7 +21,7 @@
         "symbol": "GOOGL",
         "curPrice": 192.76,
         "prePrice": 195.6,
-        "percent": "-0.93%",
+        "percent": "-1.45%",
         "currency": "$",
         "diff": "-2.84",
         "direction": "down"
@@ -30,7 +30,7 @@
         "symbol": "TSLA",
         "curPrice": 431.66,
         "prePrice": 454.13,
-        "percent": "-0.93%",
+        "percent": "-4.95%",
         "currency": "$",
         "diff": "-22.47",
         "direction": "down"
@@ -39,7 +39,7 @@
         "symbol": "AMZN",
         "curPrice": 223.79,
         "prePrice": 227.05,
-        "percent": "+0.27%",
+        "percent": "-1.44%",
         "currency": "$",
         "diff": "-3.26",
         "direction": "down"
@@ -48,7 +48,7 @@
         "symbol": "RELIANCE",
         "curPrice": 1221.5,
         "prePrice": 1216.55,
-        "percent": "-0.93%",
+        "percent": "0.41%",
         "currency": "₹",
         "diff": "4.95",
         "direction": "up"
@@ -57,7 +57,7 @@
         "symbol": "INFY",
         "curPrice": 1917,
         "prePrice": 1907.4,
-        "percent": "-0.93%",
+        "percent": "0.50%",
         "currency": "₹",
         "diff": "9.60",
         "direction": "up"
@@ -66,7 +66,7 @@
         "symbol": "TCS",
         "curPrice": 4157.1,
         "prePrice": 4169.1,
-        "percent": "+0.27%",
+        "percent": "-0.29%",
         "currency": "₹",
         "diff": "-12.00",
         "direction": "down"
@@ -75,7 +75,7 @@
         "symbol": "HDFCBANK",
         "curPrice": 1801,
         "prePrice": 1790.75,
-        "percent": "-0.93%",
+        "percent": "0.57%",
         "currency": "₹",
         "diff": "10.25",
         "direction": "up"
@@ -84,7 +84,7 @@
         "symbol": "BHARTIARTL",
         "curPrice": 1605.55,
         "prePrice": 1599.5,
-        "percent": "-0.93%",
+        "percent": "0.38%",
         "currency": "₹",
         "diff": "6.05",
         "direction": "up"
@@ -93,7 +93,7 @@
         "symbol": "META",
         "curPrice": 599.81,
         "prePrice": 603.35,
-        "percent": "-0.93%",
+        "percent": "-0.59%",
         "currency": "$",
         "diff": "-3.54",
         "direction": "down"
@@ -102,7 +102,7 @@
         "symbol": "NVDA",
         "curPrice": 137.09,
         "prePrice": 139.93,
-        "percent": "-0.93%",
+        "percent": "-2.03%",
         "currency": "$",
         "diff": "-2.84",
         "direction": "down"
@@ -111,7 +111,7 @@
         "symbol": "NFLX",
         "curPrice": 907.55,
         "prePrice": 924.14,
-        "percent": "-0.93%",
+        "percent": "-1.80%",
         "currency": "$",
         "diff": "-16.59",
         "direction": "down"
@@ -120,7 +120,7 @@
         "symbol": "DIS",
         "curPrice": 111.55,
         "prePrice": 112.55,
-        "percent": "-0.93%",
+        "percent": "-0.89%",
         "currency": "$",
         "diff": "-1.00",
         "direction": "down"
@@ -129,7 +129,7 @@
         "symbol": "BRK.B",
         "curPrice": 456.51,
         "prePrice": 459.08,
-        "percent": "-0.93%",
+        "percent": "-0.56%",
         "currency": "$",
         "diff": "-2.57",
         "direction": "down"
@@ -138,7 +138,7 @@
         "symbol": "ITC",
         "curPrice": 479.7,
         "prePrice": 476.95,
-        "percent": "-0.93%",
+        "percent": "0.58%",
         "currency": "₹",
         "diff": "2.75",
         "direction": "up"
@@ -147,7 +147,7 @@
         "symbol": "ICICIBANK",
         "curPrice": 1307.55,
         "prePrice": 1297.35,
-        "percent": "-0.93%",
+        "percent": "0.79%",
         "currency": "₹",
         "diff": "10.20",
         "direction": "up"
@@ -156,7 +156,7 @@
         "symbol": "KOTAKBANK",
         "curPrice": 1760.05,
         "prePrice": 1752.8,
-        "percent": "-0.93%",
+        "percent": "0.41%",
         "currency": "₹",
         "diff": "7.25",
         "direction": "up"
@@ -165,7 +165,7 @@
         "symbol": "LT",
         "curPrice": 3610.65,
         "prePrice": 3629.5,
-        "percent": "-0.93%",
+        "percent": "-0.52%",
         "currency": "₹",
         "diff": "-18.85",
         "direction": "down"
@@ -174,7 +174,7 @@
         "symbol": "ADANIENT",
         "curPrice": 2420,
         "prePrice": 2400.25,
-        "percent": "-0.93%",
+        "percent": "0.82%",
         "currency": "₹",
         "diff": "19.75",
         "direction": "up"
