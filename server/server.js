@@ -5,6 +5,7 @@ const app = express();
 const cors = require("cors");
 const fs = require("fs");
 const chalk = require("chalk");
+const { group1, group2, group3, group4, testGroup } = require("./stocks");
 const port = 4000;
 async function main() {
   app.use(cors());
@@ -28,6 +29,8 @@ async function main() {
     executablePath: getChromePath(),
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
+  const page1 = await browser.newPage();
+  await page1.waitForNetworkIdle({ idleTime: 500 });
 
   const STOCK_PRICE_FILE = "./data/stock-prices.json";
   const getStockPrice = async (ticker, exchange, page) => {
@@ -90,59 +93,24 @@ async function main() {
   const intervalFun = async () => {
     const startTime = Date.now();
     console.log("Start Time!");
-    const group1 = [
-      { ticker: "AAPL", exchange: "NASDAQ" },
-      { ticker: "MSFT", exchange: "NASDAQ" },
-      { ticker: "GOOGL", exchange: "NASDAQ" },
-      { ticker: "TSLA", exchange: "NASDAQ" },
-      { ticker: "AMZN", exchange: "NASDAQ" },
-    ];
-    const group3 = [
-      { ticker: "META", exchange: "NASDAQ" },
-      { ticker: "NVDA", exchange: "NASDAQ" },
-      { ticker: "NFLX", exchange: "NASDAQ" },
-      { ticker: "DIS", exchange: "NYSE" },
-      { ticker: "BRK.B", exchange: "NYSE" },
-    ];
-
-    const group2 = [
-      { ticker: "RELIANCE", exchange: "NSE" },
-      { ticker: "INFY", exchange: "NSE" },
-      { ticker: "TCS", exchange: "NSE" },
-      { ticker: "HDFCBANK", exchange: "NSE" },
-      { ticker: "BHARTIARTL", exchange: "NSE" },
-    ];
-
-    const group4 = [
-      { ticker: "ITC", exchange: "NSE" },
-      { ticker: "ICICIBANK", exchange: "NSE" },
-      { ticker: "KOTAKBANK", exchange: "NSE" },
-      { ticker: "LT", exchange: "NSE" },
-      { ticker: "ADANIENT", exchange: "NSE" },
-    ];
 
     try {
       const allPrices = [];
-      const page1 = await browser.newPage();
-      await page1.waitForNetworkIdle({ idleTime: 500 });
-      const page2 = await browser.newPage();
-      await page2.waitForNetworkIdle({ idleTime: 500 });
-      const page3 = await browser.newPage();
-      await page3.waitForNetworkIdle({ idleTime: 500 });
-      const page4 = await browser.newPage();
-      await page4.waitForNetworkIdle({ idleTime: 500 });
-      const allPrices1 = await Promise.all([
-        fetchStockPrices(group1, page1),
-        fetchStockPrices(group2, page2),
-        fetchStockPrices(group3, page3),
-        fetchStockPrices(group4, page4),
-      ]);
-      await page1.close();
-      await page2.close();
-      await page3.close();
-      await page4.close();
+      const allPrices1 = await fetchStockPrices(group1, page1);
+      const allPrices2 = await fetchStockPrices(group2, page1);
+      const allPrices3 = await fetchStockPrices(group3, page1);
+      const allPrices4 = await fetchStockPrices(group4, page1);
       for (const prices of allPrices1) {
-        allPrices.push(...prices);
+        allPrices.push(prices);
+      }
+      for (const prices of allPrices2) {
+        allPrices.push(prices);
+      }
+      for (const prices of allPrices3) {
+        allPrices.push(prices);
+      }
+      for (const prices of allPrices4) {
+        allPrices.push(prices);
       }
       fs.writeFileSync(STOCK_PRICE_FILE, JSON.stringify(allPrices, null, 4), {
         encoding: "utf-8",

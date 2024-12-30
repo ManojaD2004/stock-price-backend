@@ -13,6 +13,14 @@ RUN apt-get update && apt-get install curl gnupg -y \
     && apt-get install google-chrome-stable -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
+RUN npm install pm2 -g
+
+RUN apt update -y && apt install nginx -y
+
 COPY ./ ./
 
-CMD [ "npm", "run", "start" ]
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 4000 80
+
+CMD [ "sh", "-c","nginx && pm2-runtime npm -- start" ]

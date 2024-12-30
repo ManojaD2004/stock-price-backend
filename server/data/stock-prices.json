@@ -10,11 +10,11 @@
     },
     {
         "symbol": "MSFT",
-        "curPrice": 430.56,
+        "curPrice": 430.53,
         "prePrice": 438.11,
-        "percent": "-1.72%",
+        "percent": "-1.73%",
         "currency": "$",
-        "diff": "-7.55",
+        "diff": "-7.58",
         "direction": "down"
     },
     {
@@ -46,48 +46,48 @@
     },
     {
         "symbol": "RELIANCE",
-        "curPrice": 1221.5,
-        "prePrice": 1216.55,
-        "percent": "0.41%",
+        "curPrice": 1211.5,
+        "prePrice": 1221.05,
+        "percent": "-0.78%",
         "currency": "₹",
-        "diff": "4.95",
-        "direction": "up"
+        "diff": "-9.55",
+        "direction": "down"
     },
     {
         "symbol": "INFY",
-        "curPrice": 1917,
-        "prePrice": 1907.4,
-        "percent": "0.50%",
+        "curPrice": 1898.45,
+        "prePrice": 1916.75,
+        "percent": "-0.95%",
         "currency": "₹",
-        "diff": "9.60",
-        "direction": "up"
+        "diff": "-18.30",
+        "direction": "down"
     },
     {
         "symbol": "TCS",
-        "curPrice": 4157.1,
-        "prePrice": 4169.1,
-        "percent": "-0.29%",
+        "curPrice": 4150,
+        "prePrice": 4164.85,
+        "percent": "-0.36%",
         "currency": "₹",
-        "diff": "-12.00",
+        "diff": "-14.85",
         "direction": "down"
     },
     {
         "symbol": "HDFCBANK",
-        "curPrice": 1801,
-        "prePrice": 1790.75,
-        "percent": "0.57%",
+        "curPrice": 1784,
+        "prePrice": 1798.25,
+        "percent": "-0.79%",
         "currency": "₹",
-        "diff": "10.25",
-        "direction": "up"
+        "diff": "-14.25",
+        "direction": "down"
     },
     {
         "symbol": "BHARTIARTL",
-        "curPrice": 1605.55,
-        "prePrice": 1599.5,
-        "percent": "0.38%",
+        "curPrice": 1590.65,
+        "prePrice": 1599.85,
+        "percent": "-0.58%",
         "currency": "₹",
-        "diff": "6.05",
-        "direction": "up"
+        "diff": "-9.20",
+        "direction": "down"
     },
     {
         "symbol": "META",
@@ -136,47 +136,47 @@
     },
     {
         "symbol": "ITC",
-        "curPrice": 479.7,
-        "prePrice": 476.95,
-        "percent": "0.58%",
+        "curPrice": 476.8,
+        "prePrice": 478.6,
+        "percent": "-0.38%",
         "currency": "₹",
-        "diff": "2.75",
-        "direction": "up"
+        "diff": "-1.80",
+        "direction": "down"
     },
     {
         "symbol": "ICICIBANK",
-        "curPrice": 1307.55,
-        "prePrice": 1297.35,
-        "percent": "0.79%",
+        "curPrice": 1293.45,
+        "prePrice": 1307.55,
+        "percent": "-1.08%",
         "currency": "₹",
-        "diff": "10.20",
-        "direction": "up"
+        "diff": "-14.10",
+        "direction": "down"
     },
     {
         "symbol": "KOTAKBANK",
-        "curPrice": 1760.05,
-        "prePrice": 1752.8,
-        "percent": "0.41%",
+        "curPrice": 1741.2,
+        "prePrice": 1759.9,
+        "percent": "-1.06%",
         "currency": "₹",
-        "diff": "7.25",
-        "direction": "up"
+        "diff": "-18.70",
+        "direction": "down"
     },
     {
         "symbol": "LT",
-        "curPrice": 3610.65,
-        "prePrice": 3629.5,
-        "percent": "-0.52%",
+        "curPrice": 3590,
+        "prePrice": 3608.1,
+        "percent": "-0.50%",
         "currency": "₹",
-        "diff": "-18.85",
+        "diff": "-18.10",
         "direction": "down"
     },
     {
         "symbol": "ADANIENT",
-        "curPrice": 2420,
-        "prePrice": 2400.25,
-        "percent": "0.82%",
+        "curPrice": 2585,
+        "prePrice": 2409.95,
+        "percent": "7.26%",
         "currency": "₹",
-        "diff": "19.75",
+        "diff": "175.05",
         "direction": "up"
     }
 ]
